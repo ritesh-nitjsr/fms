@@ -1,5 +1,5 @@
-# codeknights
-An online competitive coding platform, developed using nodeJS, MongoDB, ExpressJS, HTML, pug, css
+# Library Management System
+Developed using nodeJS, MongoDB, ExpressJS, HTML, pug, css
 
 
 ### Pre-requisites
