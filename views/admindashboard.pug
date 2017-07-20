@@ -1,0 +1,283 @@
+html
+ head
+   title="Dashboard"
+   link(rel='stylesheet', href='/css/custom.css')
+   link(rel='stylesheet', href='/css/bootstrap.min.css')
+   link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
+   link(rel='stylesheet', href='/css/style.css')
+   script(src='/js/jquery-1.10.2.js')
+   script(src='/js/bootstrap.min.js')
+   script(src='/js/angular.min.js')
+   script(src='/js/custom.js')
+   script(src='http://1000hz.github.io/bootstrap-validator/dist/validator.min.js')
+ body
+ nav.navbar.navbar-inverse
+  .container-fluid
+  .navbar-header
+    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    |  
+    a.navbar-brand
+     | Welcome 
+     =adminname
+  #bs-example-navbar-collapse-1.collapse.navbar-collapse 
+    ul.nav.navbar-nav.navbar-right
+      form(method='POST' action='/logout')
+           button(type='submit' class='btn btn-default' id='logoutBtn') Logout
+div
+  ul.nav.nav-tabs.nav-justified
+    li.active
+      a(data-toggle='tab', href='#home') Applicants
+    li
+      a(data-toggle='tab', href='#menu2') Semester wise dues
+    li
+      a(data-toggle='tab', href='#menu3') Semester fee dues
+    li
+      a(data-toggle='tab', href='#menu4')  Mess fee dues
+    li
+      a(data-toggle='tab', href='#menu5')  Add Dues for semester
+  .tab-content
+    #home.tab-pane.fade.in.active
+      .container
+        if list
+            form(role='form', method='POST', action='/addstudent')
+                h1 Student details
+                .form-group
+                  label(for='name') Name:
+                  |  
+                  input#name.form-control(type='text' name='name' readonly value=list.name)
+                .form-group
+                  label(for='regno') Reg No:
+                  |  
+                  input#regno.form-control(type='text' name='regno' readonly value=list.regno)
+                .form-group
+                  label(for='email') Email:
+                  |  
+                  input#email.form-control(type='email' readonly name='email' value=list.email)
+                .form-group
+                  label(for='password') Password:
+                  |  
+                  input#password.form-control(type='password' readonly name='password' value=list.password)
+                button(type='submit' class='btn btn-success' id='addstudentbutton') Add Student
+            form(role='form', method='POST', action='/removestudent')
+               .form-group
+                  label(for='regno') Reg No:
+                  |  
+                  input#regno.form-control(type='text' name='regno' readonly value=list.regno)
+               button(type='submit' class='btn btn-warning' id='removestudentbutton') Remove Student
+        else
+            | No students have applied
+
+    #menu2.tab-pane.fade
+     .container
+         table.table
+           h1 Semester I
+           if listI.length>0
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listI
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+           else
+              | No fee dues from this semester
+         br
+         table.table
+           h1 Semester II
+           if listII.length>0
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listII
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+           else
+              | No fee dues from this semester
+         br
+         table.table
+           h1 Semester III
+           if listIII.length>0
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listIII
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+           else
+              | No fee dues from this semester
+         br
+         table.table
+           h1 Semester IV
+           if listIV.length>0
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listIV
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+           else
+              | No fee dues from this semester
+         br
+         table.table
+           h1 Semester V
+           if listV.length>0
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listV
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+           else
+              | No fee dues from this semester
+         br
+         table.table
+           h1 Semester VI
+           if listVI.length>0
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listVI
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+           else
+              | No fee dues from this semester
+         br
+         table.table
+           h1 Semester VII
+           if listVII.length>0
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listVII
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+           else
+              | No fee dues from this semester
+         br
+         table.table
+           h1 Semester VIII
+           if listVIII.length>0
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listVIII
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+           else
+              | No fee dues from this semester
+
+    #menu3.tab-pane.fade
+     .container
+        table.table
+          if listsemfees.length>0 
+           h1 Semester Fee Dues
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listsemfees
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+          else
+              | No semester fee dues
+    #menu4.tab-pane.fade
+     .container
+        table.table
+          if listmessfees.length>0
+           h1 Mess Fee Dues
+             thead.thead-inverse
+               tr
+                 th #
+                 th Reg No.
+                 th Semester
+                 th Due For
+             tbody
+              each user,index in listmessfees
+               tr
+                 th(scope='row')= index+1
+                 td= user.regno
+                 td= user.sem
+                 td= user.payfor
+          else
+              | No mess fee dues
+    #menu5.tab-pane.fade
+     .container
+          form(role='form', method='POST', action='/addsemesterdues')
+            .form-group
+              label(for='semesterdues') Add dues for Semester:
+              |  
+              select#semesterdues.form-control(name='semesterdues')
+                option I
+                option II
+                option III
+                option IV
+                option V
+                option VI
+                option VII
+                option VIII
+              button(type='submit' class='btn btn-warning' id='removestudentbutton') Add Sem Dues

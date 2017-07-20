@@ -1,0 +1,114 @@
+html
+ head
+   title="Dashboard"
+   link(rel='stylesheet', href='/css/custom.css')
+   link(rel='stylesheet', href='/css/bootstrap.min.css')
+   link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
+   link(rel='stylesheet', href='/css/style.css')
+   script(src='/js/jquery-1.10.2.js')
+   script(src='/js/bootstrap.min.js')
+   script(src='/js/angular.min.js')
+   script(src='/js/custom.js')
+   script(src='http://1000hz.github.io/bootstrap-validator/dist/validator.min.js')
+ body
+ nav.navbar.navbar-inverse
+  .container-fluid
+  .navbar-header
+    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    |  
+    a.navbar-brand
+     | Welcome 
+     =studentname
+  #bs-example-navbar-collapse-1.collapse.navbar-collapse 
+    ul.nav.navbar-nav.navbar-right
+      form(method='POST' action='/logout')
+           button(type='submit' class='btn btn-default' id='logoutBtn') Logout
+div
+  ul.nav.nav-tabs.nav-justified
+    li.active
+      a(data-toggle='tab', href='#home') Pay fees or fines
+    li
+      a(data-toggle='tab', href='#menu2') Check payment History
+    li
+      a(data-toggle='tab', href='#menu3') Check dues
+  .tab-content
+    #home.tab-pane.fade.in.active
+      .container
+          form(role='form', method='POST', action='/dashboard')
+            h1 Pay Fees
+            .form-group
+              label(for='payfor') Pay for:
+              |  
+              select#payfor.form-control(onchange='updateamount();' name='payfor')
+                option Semester Fees
+                option Mess Fees
+            .form-group
+              label(for='semester') Semester:
+              |  
+              select#semester.form-control(name='semester')
+                option I
+                option II
+                option III
+                option IV
+                option V
+                option VI
+                option VII
+                option VIII
+            .form-group
+              label(for='cardno') Card No:
+              |  
+              input#cardno.form-control(type='number' required)
+            .form-group
+              label(for='bankname') Bank Name:
+              |  
+              input#bankname.form-control(type='text' required)
+            .form-group
+              label(for='amount') Amount:
+              |  
+              input#amount.form-control(type='text' readonly value='65500')
+            .form-group
+              label(for='pin') PIN:
+              |  
+              input#pin.form-control(type='password' required max='9999' min='')
+            button(type='submit' class='btn btn-success' id='paybutton' onclick="paybuttonclicked()") Pay
+
+    #menu2.tab-pane.fade
+     .container
+        h3 Payment History
+         table.table
+           thead.thead-inverse
+             tr
+               th #
+               th Reg No.
+               th Semester
+               th Paid For
+               th Status
+           tbody
+            each user,index in list1
+             tr
+               th(scope='row')= index+1
+               td= user.regno
+               td= user.sem
+               td= user.payfor
+               td= user.status
+    #menu3.tab-pane.fade
+      .container
+        h3 Dues
+         table.table
+           thead.thead-inverse
+             tr
+               th #
+               th Reg No.
+               th Semester
+               th Pay For
+           tbody
+            each user,index in list2
+             tr
+               th(scope='row')= index+1
+               td= user.regno
+               td= user.sem
+               td= user.payfor
