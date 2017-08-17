@@ -1,4 +1,4 @@
-# Library Management System
+# Fee Management System
 Developed using nodeJS, MongoDB, ExpressJS, HTML, pug, css
 
 
